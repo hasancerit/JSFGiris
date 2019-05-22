@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+		<title>JSF FORM</title>
+	</h:head>
+		
+	<h:body>
+		<h:form >		
+			<h:outputText value="#{formBean.isim}"/>
+			<h:inputText id="isimId" label="isimLabel" value="#{formBean.isim}" required="true" requiredMessage="isim"/>
+			<h:message for="isimId" style="color:red"/>
+			
+			<h:outputText value="Soyisim"/>
+			<h:inputText value="#{formBean.soyisim}"/>
+			
+			<h:outputText value="Cinsiyetiniz:"/>
+			<h:selectManyCheckbox value="#{formBean.cinsiyet}">
+				<f:selectItem itemLabel="Erkek" itemValue="Erkek"/>
+				<f:selectItem itemLabel="Kadın" itemValue="Kadın"/>
+			</h:selectManyCheckbox>
+			
+			<h:outputText value="Adres:"/>
+			<h:inputTextarea value="#{formBean.adres}"/>
+			
+			<!-- Passing Parametres -->
+			<h:commandButton action="#{formBean.passWithMethod('param_1')}" value="METOD İLE PARAMETRE GÖNDER" />
+			
+			<h:commandButton action="#{formBean.passWithFparam1()}" value="F:PARAM İLE PARAMETRE GÖNDER">
+				<f:param name="param2" value="param_2"/> 
+			</h:commandButton>
+
+			<!-- Naviation Page -->
+			<h:commandButton action="#{formBean.yonlendir()}" value="GEÇ" />
+		</h:form>
+	
+	</h:body>
+</html>
